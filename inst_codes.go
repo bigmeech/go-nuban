@@ -1,1 +1,27 @@
 package go_nuban
+
+const (
+	Access_Bank                       = "044"
+	Citibank_Nigeria                  = "023"
+	Diamond_Bank                      = "063"
+	Ecobank_Nigeria                   = "050"
+	Enterprise_Bank                   = "084"
+	Fidelity_Bank                     = "070"
+	First_Bank                        = "011"
+	First_City_Monument_Bank          = "214"
+	Guaranty_Trust_Bank               = "058"
+	Heritage_Bank_Plc                 = "030"
+	Keystone_Bank_Limited             = "082"
+	MainStreet_Bank                   = "014"
+	Polaris_Bank                      = "076"
+	Providus_Bank_Plc                 = "101"
+	Stanbic_IBTC_Bank_Nigeria_Limited = "221"
+	Standard_Chartered_Bank_Nigeria   = "068"
+	Sterling_Bank                     = "232"
+	SunTrust_Bank_Nigeria             = "100"
+	Union_Bank                        = "032"
+	UBA                               = "033"
+	Unity_Bank_Plc                    = "215"
+	Wema_Bank                         = "035"
+	Zenith_Bank                       = "057"
+)
