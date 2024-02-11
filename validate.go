@@ -6,11 +6,11 @@ import (
 )
 
 const (
-	NUBAN_LENGTH = 16
+	nuban_length = 16
 )
 
 func Validate(account_number string) bool {
-	if len(account_number) != NUBAN_LENGTH {
+	if len(account_number) != nuban_length {
 		return false
 	}
 
