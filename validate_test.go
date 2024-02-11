@@ -8,27 +8,26 @@ import (
 
 func TestValidate(t *testing.T) {
 	tests := []struct {
-		name           string
-		account_number string
-		expected       bool
+		name  string
+		nuban string
+		want  bool
 	}{
 		{
-			name:           "valid account number",
-			account_number: "0000000000000",
-			expected:       false,
+			name:  "Valid",
+			nuban: "0000014579",
+			want:  true,
 		},
 		{
-			name:           "invalid account number",
-			account_number: "00000000000000",
-			expected:       false,
+			name:  "Invalid",
+			nuban: "0000014578",
+			want:  false,
 		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			actual := Validate(tt.account_number)
-			if actual != tt.expected {
-				t.Errorf("expected %v, got %v", tt.expected, actual)
+			if got := Validate(tt.nuban); got != tt.want {
+				t.Errorf("Validate() = %v, want %v", got, tt.want)
 			}
 		})
 	}

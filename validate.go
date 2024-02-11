@@ -1,46 +1,22 @@
 package go_nuban
 
-import (
-	"strconv"
-	"strings"
-)
-
 const (
-	nuban_length = 16
+	nuban_length = 10
 )
 
-func Validate(account_number string) bool {
-	if len(account_number) != nuban_length {
-		return false
+func Validate(nuban string) bool {
+	if len(nuban) != nuban_length {
+		return false // NUBAN code length must be 10
 	}
 
-	// Extract digits from account number
-	digits := strings.Split(account_number, "")
+	// Extract financial institution code and serial number
+	fiCode := nuban[:6]
+	serialNumber := nuban[6:9]
+	checkDigit := int(nuban[9] - '0')
 
-	// Convert each digit to integer
-	var total int
-	for i, digitStr := range digits[:len(digits)-1] {
-		digit, err := strconv.Atoi(digitStr)
-		if err != nil {
-			return false
-		}
-		multiplier := 3
-		if (i+1)%3 == 0 {
-			multiplier = 7
-		}
-		total += digit * multiplier
-	}
-
-	// Calculate check digit
-	checkDigit := 10 - (total % 10)
-	if checkDigit == 10 {
-		checkDigit = 0
-	}
+	// Calculate expected check digit
+	expectedCheckDigit := calculateCheckDigit(fiCode + serialNumber)
 
 	// Validate check digit
-	lastDigit, err := strconv.Atoi(digits[len(digits)-1])
-	if err != nil {
-		return false
-	}
-	return checkDigit == lastDigit
+	return checkDigit == expectedCheckDigit
 }
